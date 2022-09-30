@@ -2,9 +2,9 @@ package inheritance_mapping;
 
 import javax.persistence.*;
 
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn
+//@Entity
+//@Inheritance(strategy = InheritanceType.JOINED)
+//@DiscriminatorColumn
 // InheritanceType.JOINED >> 이 annotation이 생략되면, Item table에 DTYPE column 자체가 없다. 이렇게만 되어 있으면, Item의 DTYPE column에 자식 클래스의 엔티티명이 default로 삽입된다.
 // InheritanceType.SINGLE_TABLE >> 이 annotation이 생략돼도, Item table에 DTYPE column이 무조건 생성된다.
 public abstract class Item {
