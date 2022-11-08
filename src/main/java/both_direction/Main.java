@@ -23,14 +23,26 @@ public class Main {
             em.flush();
             em.clear();
 
+            t1.setTeamName("changed Team Name"); // update query는 어디에서도 실행되지 않는다.
             Member member = new Member();
             member.setId(20L);
             member.setName("first member");
             member.setTeam(t1);
 
             System.out.println("===== before =====");
-            em.persist(member); // persist 호출 히, Team1 테이블에 select query가 나감.
+            em.persist(member); // persist 호출 시, Team1 테이블에 select query가 나감.
             System.out.println("===== after =====");
+
+            System.out.println("is in context? " + (em.contains(member))); // true
+            System.out.println("is in context? " + (em.contains(t1))); // false
+            System.out.println("same? " + (t1 == member.getTeam())); // true
+
+            em.flush();
+            em.clear();
+
+            System.out.println("is in context? " + (em.contains(member))); // false
+            System.out.println("is in context? " + (em.contains(t1))); // false
+            System.out.println("same? " + (t1 == member.getTeam())); // true
 
             tx.commit();
 
