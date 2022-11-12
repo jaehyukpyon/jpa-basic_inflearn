@@ -15,7 +15,7 @@ public class MemberJoin {
     @JoinColumn(name = "team_id")
     private TeamJoin team;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "child_id")
     private ChildJoin childJoin;
 

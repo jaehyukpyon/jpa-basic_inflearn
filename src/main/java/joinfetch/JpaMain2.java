@@ -25,17 +25,55 @@ public class JpaMain2 {
             
             em.persist(team);
 
+            Ancestor ancestor1 = new Ancestor();
+            ancestor1.setAncestorId(1000L);
+            ancestor1.setAncestorName("ancestor1");
+
+            Ancestor ancestor2 = new Ancestor();
+            ancestor2.setAncestorId(2000L);
+            ancestor2.setAncestorName("ancestor2");
+
+            Ancestor ancestor3 = new Ancestor();
+            ancestor3.setAncestorId(3000L);
+            ancestor3.setAncestorName("ancestor3");
+
+            em.persist(ancestor1);
+            em.persist(ancestor2);
+            em.persist(ancestor3);
+
+            Final finalEntity1 = new Final();
+            finalEntity1.setFinalId(10000L);
+            finalEntity1.setFinalName("finalA");
+
+            Final finalEntity2 = new Final();
+            finalEntity2.setFinalId(20000L);
+            finalEntity2.setFinalName("finalB");
+
+            Final finalEntity3 = new Final();
+            finalEntity3.setFinalId(30000L);
+            finalEntity3.setFinalName("finalC");
+
+            em.persist(finalEntity1);
+            em.persist(finalEntity2);
+            em.persist(finalEntity3);
+
             ChildJoin childJoin1 = new ChildJoin();
             childJoin1.setChildId(100L);
             childJoin1.setChildName("childA");
+            childJoin1.setAncestor(ancestor1);
+            childJoin1.setFinalEntity(finalEntity1);
 
             ChildJoin childJoin2 = new ChildJoin();
             childJoin2.setChildId(200L);
             childJoin2.setChildName("childB");
+            childJoin2.setAncestor(ancestor2);
+            childJoin2.setFinalEntity(finalEntity2);
 
             ChildJoin childJoin3 = new ChildJoin();
             childJoin3.setChildId(300L);
             childJoin3.setChildName("childC");
+            childJoin3.setAncestor(ancestor3);
+            childJoin3.setFinalEntity(finalEntity3);
 
             em.persist(childJoin1);
             em.persist(childJoin2);
