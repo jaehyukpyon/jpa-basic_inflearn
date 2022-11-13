@@ -25,17 +25,34 @@ public class JpaMain2 {
             
             em.persist(team);
 
+            FirstLeaf firstLeaf = new FirstLeaf();
+            firstLeaf.setFirstLeafId(1111L);
+            firstLeaf.setFirstLeafName("firstLeaf");
+
+            SecondLeaf secondLeaf = new SecondLeaf();
+            secondLeaf.setSecondLeafId(2222L);
+            secondLeaf.setSecondLeafName("secondLeaf");
+
+            em.persist(firstLeaf);
+            em.persist(secondLeaf);
+
             Ancestor ancestor1 = new Ancestor();
             ancestor1.setAncestorId(1000L);
             ancestor1.setAncestorName("ancestor1");
+            ancestor1.setFirstLeaf(firstLeaf);
+            ancestor1.setSecondLeaf(secondLeaf);
 
             Ancestor ancestor2 = new Ancestor();
             ancestor2.setAncestorId(2000L);
             ancestor2.setAncestorName("ancestor2");
+            ancestor2.setFirstLeaf(firstLeaf);
+            ancestor2.setSecondLeaf(secondLeaf);
 
             Ancestor ancestor3 = new Ancestor();
             ancestor3.setAncestorId(3000L);
             ancestor3.setAncestorName("ancestor3");
+            ancestor3.setFirstLeaf(firstLeaf);
+            ancestor3.setSecondLeaf(secondLeaf);
 
             em.persist(ancestor1);
             em.persist(ancestor2);

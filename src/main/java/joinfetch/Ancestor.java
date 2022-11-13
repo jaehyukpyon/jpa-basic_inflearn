@@ -1,8 +1,6 @@
 package joinfetch;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table
@@ -12,6 +10,12 @@ public class Ancestor {
     private Long ancestorId;
 
     private String ancestorName;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private FirstLeaf firstLeaf;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private SecondLeaf secondLeaf;
 
     public Long getAncestorId() {
         return ancestorId;
@@ -27,5 +31,21 @@ public class Ancestor {
 
     public void setAncestorName(String ancestorName) {
         this.ancestorName = ancestorName;
+    }
+
+    public FirstLeaf getFirstLeaf() {
+        return firstLeaf;
+    }
+
+    public void setFirstLeaf(FirstLeaf firstLeaf) {
+        this.firstLeaf = firstLeaf;
+    }
+
+    public SecondLeaf getSecondLeaf() {
+        return secondLeaf;
+    }
+
+    public void setSecondLeaf(SecondLeaf secondLeaf) {
+        this.secondLeaf = secondLeaf;
     }
 }
